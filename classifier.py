@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import time
 import glob
+import pickle
 from utils import *
 
 from sklearn import svm
@@ -28,8 +29,8 @@ orient = 9  # HOG orientations
 pix_per_cell = 8  # HOG pixels per cell
 cell_per_block = 2  # HOG cells per block
 hog_channel = "ALL"  # Can be 0, 1, 2, or "ALL"
-spatial_size = (16, 16)  # Spatial binning dimensions
-hist_bins = 16  # Number of histogram bins
+spatial_size = (32, 32)  # Spatial binning dimensions
+hist_bins = 32  # Number of histogram bins
 spatial_feat = True  # Spatial features on or off
 hist_feat = True  # Histogram features on or off
 hog_feat = True  # HOG features on or off
@@ -79,3 +80,16 @@ t2 = time.time()
 print(round(t2 - t, 2), 'Seconds to train SVC...')
 # Check the score of the SVC
 print('Test Accuracy of SVC = ', round(clf.score(X_test, y_test), 4))
+
+print('Pickling the model')
+svc_model = {
+    'svc': clf,
+    'scaler': X_scaler,
+    'orient': orient,
+    'pix_per_cell': pix_per_cell,
+    'cell_per_block': cell_per_block,
+    'spatial_size': spatial_size,
+    'hist_bins': hist_bins
+}
+with open('svc_model_32.p', 'wb') as f:
+    pickle.dump(svc_model, f)
