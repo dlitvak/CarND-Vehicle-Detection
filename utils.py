@@ -19,10 +19,20 @@ def convert_color(image, conv_color_space='RGB2YCrCb'):
     return cvt_image
 
 # L35
+# color_space = 'YCrCb'  # Can be RGB, HSV, LUV, HLS, YUV, YCrCb
+# orient = 9  # HOG orientations
+# pix_per_cell = 8  # HOG pixels per cell
+# cell_per_block = 2  # HOG cells per block
+# hog_channel = "ALL"  # Can be 0, 1, 2, or "ALL"
+# spatial_size = (16, 16)  # Spatial binning dimensions
+# hist_bins = 16  # Number of histogram bins
+# spatial_feat = True  # Spatial features on or off
+# hist_feat = True  # Histogram features on or off
+# hog_feat = True  # HOG features on or off
 # Define a single function that can extract features using hog sub-sampling and make predictions
 def find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins):
     draw_img = np.copy(img)
-    img = img.astype(np.float32) / 255
+    # img = img.astype(np.float32) / 255
 
     img_tosearch = img[ystart:ystop, :, :]
     ctrans_tosearch = convert_color(img_tosearch, conv_color_space='RGB2YCrCb')
@@ -97,7 +107,7 @@ def get_hog_features(img, orient, pix_per_cell, cell_per_block,
                                   pixels_per_cell=(pix_per_cell, pix_per_cell),
                                   block_norm=block_norm,
                                   cells_per_block=(cell_per_block, cell_per_block),
-                                  transform_sqrt=False,
+                                  transform_sqrt=True,
                                   visualize=vis, feature_vector=feature_vec)
         return features, hog_image
     # Otherwise call with one output
@@ -106,7 +116,7 @@ def get_hog_features(img, orient, pix_per_cell, cell_per_block,
                        pixels_per_cell=(pix_per_cell, pix_per_cell),
                        cells_per_block=(cell_per_block, cell_per_block),
                        block_norm=block_norm,
-                       transform_sqrt=False,
+                       transform_sqrt=True,
                        visualize=vis, feature_vector=feature_vec)
         return features
 
