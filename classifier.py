@@ -35,6 +35,7 @@ spatial_feat = True  # Spatial features on or off
 hist_feat = True  # Histogram features on or off
 hog_feat = True  # HOG features on or off
 
+# Extract and scale features
 car_features = extract_features(cars, color_space=color_space,
                                 spatial_size=spatial_size, hist_bins=hist_bins,
                                 orient=orient, pix_per_cell=pix_per_cell,
