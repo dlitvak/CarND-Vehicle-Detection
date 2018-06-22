@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 * _training_            SVC training images.
 * _convert_png_jpg.py_  A script to convert png images into jpeg - make the images inline with test images to avoid the 
                         confusion.  In retrospect, a better approach would have been to convert the images after reading.
-* _svc_model_32_sqrt.p_     Model output by _classifier.py_ for the use by Pipeline.
+* _svc_model_32_sqrt.p_     Model output by _classifier.py_ for the use by Pipeline  (Not included due to the github commit size limit)
 * _debug_pipeline.py_       A file used to read a sequence of images and debug the pipeline.
 * _project_video_out.mp4_   Final annotated video.
 * _test_images_             Images to test on
