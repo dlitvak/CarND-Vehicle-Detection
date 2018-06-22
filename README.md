@@ -42,8 +42,9 @@ provided by Udacity (_classifier.py_:13-25).  Here are the examples of the image
 Then, I extracted the training image features (_classifier.py_:38-56).  
 The code extracting the HOG features is in the `get_hog_features()` method in [utils.py](./utils.py).  It uses `skimage.hog()` implementation from
 the scikit-learn library.   The code extracting the image color features is in `color_hist()` and in `bin_spatial()` in [utils.py](./utils.py).
-Most of the code was adopted from the lectures.  All I did was experimenting with the different HOG vector `orientation`, HOG 
-`pixels_per_cell` numbers, color spaces, and color bin sizes.
+Most of the code was adopted from the lectures.  All I did was experiment with the different HOG vector `orientation`, HOG 
+`pixels_per_cell` numbers, color spaces, and color bin sizes.  I chose an optimal number of the `orientation` bins at 9.  The number of pixels per
+cell in which the gradient was taken seemed optimal at 8.
 
 Here are the heatmaps of the HOG of the car and non-car images:
 ![Car HOG](./output_images/hog_features_car.png)
